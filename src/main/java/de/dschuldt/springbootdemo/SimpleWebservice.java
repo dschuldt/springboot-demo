@@ -10,12 +10,25 @@ import java.net.UnknownHostException;
 @Controller
 public class SimpleWebservice {
 
+    private String version;
+    private String ip;
+
+
+    public SimpleWebservice() throws UnknownHostException {
+        this.version = "1.2";
+        this.ip = InetAddress.getLocalHost().toString();
+    }
+
+
     @GetMapping("/")
     @ResponseBody
-    public String sayHello() throws UnknownHostException {
-        String version = "1.1";
-        String ip = InetAddress.getLocalHost().toString();
+    public String sayHello() {
         return String.format("Spring Boot Demo v%s running on %s", version, ip);
     }
 
+    @GetMapping("/api")
+    @ResponseBody
+    public String sayHelloAgain(){
+        return String.format("You have hit the /api endpoint of Spring Boot Demo v%s running on %s", version, ip);
+    }
 }
