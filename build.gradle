@@ -17,7 +17,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'de.dschuldt'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 10
+sourceCompatibility = 9
 
 repositories {
     mavenCentral()
@@ -26,5 +26,8 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.0.4.RELEASE'
+    compile group: 'io.micrometer', name: 'micrometer-core', version: '1.0.6'
+    compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.0.6'
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
